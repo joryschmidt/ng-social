@@ -1,6 +1,10 @@
 <div class="row" ng-controller="FacebookCtrl">
   <div class="col-md-4">
     <h4>{{ welcomeMessage }}</h4>
+    <div ng-if='isLoggedIn == true'>
+      <a href='{{ userInfo.link }}' target='_blank'><img ng-src='{{ picture }}' /></a>
+    </div>
+    <br />
     <div ng-if='isLoggedIn == false'>
       <button type="button" class="btn btn-default" ng-click='login()'>Login</button>
     </div>
@@ -24,7 +28,7 @@
     <div class="well">
       <h4>Permissions</h4>
       <ul>
-        <li></li>
+        <li ng-repeat='permission in permissions'>{{ permission.permission }} - {{ permission.status }}</li>
       </ul>
     </div>
   </div>
