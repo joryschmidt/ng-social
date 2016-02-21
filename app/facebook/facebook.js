@@ -11,7 +11,7 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
 .config(function($facebookProvider) {
   $facebookProvider.setAppId('1667675590150055');
-  $facebookProvider.setPermissions("email", "public_profile", "user_posts", "publish_actions", "user_photos");
+  $facebookProvider.setPermissions("email, public_profile, user_posts, publish_actions, user_photos");
 })
 
 .run(function($rootScope) {
