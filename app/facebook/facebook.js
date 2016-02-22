@@ -26,6 +26,7 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
 
 .controller('FacebookCtrl', ['$scope', '$facebook', function($scope, $facebook) {
   $scope.isLoggedIn = false;
+  $scope.isMsg = false;
 
   $scope.login = function() {
     $facebook.login().then(function() {
@@ -52,13 +53,22 @@ angular.module('ngSocial.facebook', ['ngRoute', 'ngFacebook'])
           $scope.permissions = response.data;
           $facebook.api('/me/posts').then(function(response) {
             $scope.posts = response.data;
-            console.log(response.data);
           });
         });
       });
     },
     function(err){
       $scope.welcomeMessage = "Please log in";
+    });
+  }
+
+  $scope.postStatus = function() {
+    var body = this.body;
+    this.body = '';
+    $facebook.api('/me/feed', 'post', {message: body}).then(function(response) {
+      $scope.msg = 'Thanks for posting!';
+      $scope.isMsg = true;
+      refresh();
     });
   }
 
