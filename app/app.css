@@ -36,7 +36,7 @@
 .stbody {
   min-height: 70px;
   margin-bottom: 10px;
-  border-bottom: 1px dashed #cc0000;
+  border-bottom: 1px solid #cc0000;
 }
 
 .stimg {
